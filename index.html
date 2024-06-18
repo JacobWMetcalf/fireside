@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card Game</title>
+    <title>Fireside Game</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap" rel="stylesheet"> <!-- Add Google Fonts link -->
     <style>
         body {
             display: flex;
@@ -17,28 +18,29 @@
             background-position: center;
         }
         #card {
-            font-size: 1.5rem;
+            font-family: 'Baloo 2', cursive; /* Use Google Fonts */
+            font-size: 2rem; /* Adjust the font size as needed */
             margin: 20px;
-            padding: 20px;
-            border: 1px solid #007bff;
-            border-radius: 10px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.5s ease, opacity 0.5s ease;
+            padding: 40px;
+            border-radius: 20px;
+            background-color: rgba(255, 218, 185, 0.8); /* Semi-transparent peach background color */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             width: 80%;
             max-width: 600px;
             text-align: center;
         }
         #NextCardBtn {
             margin-top: 20px;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            border-radius: 20px;
+            background-color: #ff6f00; /* Fire-like orange color */
+            border: none;
+            color: #fff;
+            transition: background-color 0.3s ease;
         }
-        .fade-out {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        .fade-in {
-            opacity: 1;
-            transform: translateY(0);
+        #NextCardBtn:hover {
+            background-color: #e25800; /* Darker shade on hover */
         }
         .confetti-container {
             position: fixed;
@@ -49,11 +51,20 @@
             pointer-events: none;
             z-index: 1000;
         }
+        #logo {
+            font-family: 'Baloo 2', cursive; /* Use Google Fonts */
+            font-size: 6rem; /* Adjust the font size as needed */
+            font-weight: bold;
+            color: #ff6f00; /* Fire-like orange color */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.5); /* Add a text shadow resembling flames */
+            margin-bottom: 40px; /* Increase margin for better spacing */
+        }
     </style>
 </head>
 <body>
-    <div id="card" class="text-center">Hello, world!</div>
-    <button onclick="updateCard()" id="NextCardBtn" class="btn btn-primary">Let's Play!</button>
+    <div id="logo">Fireside</div> <!-- Word art logo -->
+    <div id="card" class="text-center">Welcome to Fireside! Remember to have fun and don't be a poor sport! </div>
+    <button onclick="updateCard()" id="NextCardBtn">Let's Play!</button>
     <div id="confetti-container" class="confetti-container"></div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -61,7 +72,7 @@
     <script>
         var counter = 0;
         const cardText = [
-            "Pick a word to rhyme, go clockwise, when a player can no longer rhyme, they drink!",
+        "Pick a word to rhyme, go clockwise, when a player can no longer rhyme, they drink!",
             "Pick a player to do 10 jumping jacks, they can choose to finish their drink instead",
             "Wearing Red? Drink twice!",
             "If you can't say the birthday of the player to your right, drink! If they know your birthday, drink 3 times!",
@@ -73,11 +84,13 @@
             "Vroom vroom Skirt Skirt! You know what to do",
             "Vroom vroom Skirt Skirt! You know what to do",
             "Vroom vroom Skirt Skirt! You know what to do",
+            "Vroom vroom Skirt Skirt! You know what to do",
             "Impression Card! You are now Arnold! Mess up and you drink!",
             "Impression Card! You are now Shrek! Mess up and you drink!",
             "Impression Card! You are now Donald Trump! Mess up and you drink!",
             "Impression Card! You are now Mickey Mouse! Mess up and you drink!",
             "Impression Card! You are now Arnold! Mess up and you drink!",
+            "Impression Card! You are now Yoda! Mess up and you drink!",
             "Reset! Everyone takes a drink, reset all impressions and rules",
             "Reset! Everyone takes a drink, reset all impressions and rules",
             "Reset! Everyone takes a drink, reset all impressions and rules",
@@ -99,14 +112,35 @@
             "Rock, Paper, Scissors! Challenge a player, best of three. Loser drinks!",
             "Switch Seats! Everyone must switch seats, the last person to find a seat drinks!",
             "Mimic the Player! Everyone mimics the player to your right, the worst mimic (voted by the group) drinks!",
+            "Mimic the Player! Everyone mimics the player to your left, the worst mimic (voted by the group) drinks!",
+            "Tell the group something about yourself that nobody already knows, can't? Finish your drink",
+            "Tell the group something about yourself that nobody already knows, can't? Finish your drink",
             "Tell the group something about yourself that nobody already knows, can't? Finish your drink",
             "Alphabet Game: Pick a category and go through the alphabet naming items in that category. Miss or repeat and you drink!",
             "Charades! Act out a movie title, the first player to guess correctly picks someone to drink.",
             "Truth or Dare! The player to your right gives you a truth or dare. Refuse or fail, and you drink!",
+            "Truth or Dare! The player to your right gives you a truth or dare. Refuse or fail, and you drink!",
+            "Truth or Dare! The player to your right gives you a truth or dare. Refuse or fail, and you drink!",
+            "Truth or Dare! The player to your right gives you a truth or dare. Refuse or fail, and you drink!",
+            "Show a hidden talent",
+            "Truth or drink! Ask someone a question, if they dont answer they drink!",
+            "Truth or drink! Ask someone a question, if they dont answer they drink!",
+            "Truth or drink! Ask someone a question, if they dont answer they drink!",
+            "Dare or drink! Dare someone, if they dont do it they drink!",
+            "Dare or drink! Dare someone, if they dont do it they drink!",
+            "Dare or drink! Dare someone, if they dont do it they drink!",
+            "Do your best impression of the person to your left",
+            "Do your best impression of the person to your left",
+            "Do your best impression of the person to your right",
+            "Do your best impression of the person to your right",
             "Rule! Create a new rule!",
             "Rule! Create a new rule!",
             "Rule! Create a new rule!",
             "Rule! Create a new rule!",
+            "Tell the group your weirdest sexual experience",
+            "Tell the group your weirdest sexual experience",
+            "Tell the group your weirdest sexual fantasy",
+            "Tell the group your weirdest sexual fantasy",
             "Ask someone to explain why Anakin Skywalker turned to the dark side, if the group doesn't think the answer was good enough, they drink!",
             "Ask someone to explain what the pythagorean theorem is and what it's used for, if the group doesn't think the answer was good enough, they drink!",
             "Ask someone to explain how airplanes fly, if the group doesn't think the answer was good enough, they drink!",
@@ -132,7 +166,39 @@
             "Rule! I'm just a baby! Pick someone to be the baby of the group, everyone must talk to them as if they are just a baby, if they fail to do this, they drink",
             "Rule! I'm just a baby! Pick someone to be the baby of the group, everyone must talk to them as if they are just a baby, if they fail to do this, they drink",
             "Singing voice! Pick an opera song (Rigoletto, Act lll, La donna è mobile). Stand up and let the group hear your best opera voice! Yes, finish the entire song, we want to hear you",
-            "Let's get real for a moment, what was the hardest thing you've been through and who helped you through it? If that person is in the circle, everyone cheers to them!"
+            "Let's get real for a moment, what was the hardest thing you've been through and who helped you through it? If that person is in the circle, everyone cheers to them!",
+            "Explain a career of your choice, using only two words, whoever guesses correctly gives out a drink",
+            "Explain a vehicle of your choice, using only two words, whoever guesses correctly gives out a drink",
+            "Explain a fruit of your choice, using only two words, whoever guesses correctly gives out a drink",
+            "Explain a vegetable of your choice, using only two words, whoever guesses correctly gives out a drink",
+            "Explain a sport of your choice, using only two words, whoever guesses correctly gives out a drink",
+            "Ask someone to spell acquaintance, if they get it wrong, they drink",
+            "Ask someone to spell daiquiri, if they get it wrong, they drink",
+            "Ask someone to spell fluorescent, if they get it wrong, they drink",
+            "Ask someone to spell perseverance, if they get it wrong, they drink",
+            "Put up a convincing arugment that: the earth is flat, if the group doesnt like it, you drink",
+            "Put up a convincing arugment that: farts smell good, if the group doesnt like it, you drink",
+            "Put up a convincing arugment that: women are more horny than men, if the group doesnt like it, you drink",
+            "Put up a convincing arugment that: starwars sucks, if the group doesnt like it, you drink",
+            "Where do you keep going? Whoever has gotten up the most out of their seat while playing the game, drinks",
+            "You have 30 seconds to make the person to your left smile/laugh, if they dont you drink, if they do, they drink",
+            "You have 30 seconds to make the person to your right smile/laugh, if they dont you drink, if they do, they drink",
+            "You have 30 seconds to make the person across from you smile/laugh, if they dont you drink, if they do, they drink",
+            "Ask someone to do their best animal impression. If it's not good enough, they drink!",
+            "Ask someone to do their best celebrity impression. If it's not good enough, they drink!",
+            "Ask someone to draw a picture in the air with their finger. First person to guess correctly can make someone drink!",
+            "Ask someone to say a tongue twister three times fast. If they mess up, they drink!",
+            "Ask someone to balance on one leg for 30 seconds. If they fail, they drink!",
+            "Ask someone to count backwards from 50 in increments of 7. If they mess up, they drink!",
+            "Cheers somebody, if they cheers you back, they have to finish their drink",
+            "Cheers somebody, if they cheers you back, they have to finish their drink",
+            "Cheers somebody, if they DONT cheers you back, they have to finish their drink",
+            "Cheers somebody, if they DONT cheers you back, they have to finish their drink",
+            "Say nothing, get up, spin around and say black spot 3 times, spit on the ground 3 times (think pirates of the Caribbean), last to do the same drinks, the kraken got them!",
+            "Say nothing, get up, spin around and say black spot 3 times, spit on the ground 3 times (think pirates of the Caribbean), last to do the same drinks, the kraken got them!",
+            "Say nothing, get up, spin around and say black spot 3 times, spit on the ground 3 times (think pirates of the Caribbean), last to do the same drinks, the kraken got them!",
+            "Simon Says! One player becomes 'Simon' and gives commands. If anyone follows a command without 'Simon says,' they drink!",
+            "Freeze master! You may say 'Freeze'! at any time, all players must freeze until you say Defrost! Any player who moves, drinks!"
         ];
 
         shuffle(cardText);
