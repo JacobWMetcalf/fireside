@@ -16,17 +16,26 @@
             background-image: url('https://images.unsplash.com/photo-1444210971048-6130cf0c46cf?q=80&w=2673&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Add a background image */
             background-size: cover;
             background-position: center;
+            padding: 10px; /* Add some padding to the body */
+        }
+        #logo {
+            font-family: 'Baloo 2', cursive; /* Use Google Fonts */
+            font-size: 4rem; /* Adjust the font size as needed */
+            font-weight: bold;
+            color: #ff6f00; /* Fire-like orange color */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.5); /* Add a text shadow resembling flames */
+            margin-bottom: 20px; /* Increase margin for better spacing */
         }
         #card {
             font-family: 'Baloo 2', cursive; /* Use Google Fonts */
-            font-size: 2rem; /* Adjust the font size as needed */
+            font-size: 1.5rem; /* Adjust the font size as needed */
             margin: 20px;
-            padding: 40px;
+            padding: 30px;
             border-radius: 20px;
             background-color: rgba(255, 218, 185, 0.8); /* Semi-transparent peach background color */
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            width: 80%;
-            max-width: 600px;
+            width: 90%; /* Adjust width for smaller screens */
+            max-width: 400px; /* Limit maximum width for readability */
             text-align: center;
         }
         #NextCardBtn {
@@ -50,14 +59,6 @@
             height: 100%;
             pointer-events: none;
             z-index: 1000;
-        }
-        #logo {
-            font-family: 'Baloo 2', cursive; /* Use Google Fonts */
-            font-size: 6rem; /* Adjust the font size as needed */
-            font-weight: bold;
-            color: #ff6f00; /* Fire-like orange color */
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.5); /* Add a text shadow resembling flames */
-            margin-bottom: 40px; /* Increase margin for better spacing */
         }
     </style>
 </head>
@@ -198,7 +199,10 @@
             "Say nothing, get up, spin around and say black spot 3 times, spit on the ground 3 times (think pirates of the Caribbean), last to do the same drinks, the kraken got them!",
             "Say nothing, get up, spin around and say black spot 3 times, spit on the ground 3 times (think pirates of the Caribbean), last to do the same drinks, the kraken got them!",
             "Simon Says! One player becomes 'Simon' and gives commands. If anyone follows a command without 'Simon says,' they drink!",
-            "Freeze master! You may say 'Freeze'! at any time, all players must freeze until you say Defrost! Any player who moves, drinks!"
+            "Freeze master! You may say 'Freeze'! at any time, all players must freeze until you say Defrost! Any player who moves, drinks!",
+            "Going around the group, you have 2 seconds to say a word related to the previous word said, loser drinks!",
+            "Going around the group, you have 2 seconds to say a word related to the previous word said, loser drinks!",
+            "Going around the group, you have 2 seconds to say a word related to the previous word said, loser drinks!"
         ];
 
         shuffle(cardText);
